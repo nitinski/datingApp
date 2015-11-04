@@ -1,0 +1,42 @@
+<style>
+  .my-input {
+    transition:all linear 0.5s;
+    background: transparent;
+  }
+  .my-input.ng-invalid {
+    color:white;
+    background: red;
+  }
+</style>
+
+
+
+<div ng-controller='usersController' class="container">
+<script>
+  usersController.getUsers();
+
+</script>
+    <hr>
+      <div style="width:600px; " >Search: <input type='text' ng-model='search'></div><br>
+      <table class="table">
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Birthdate</th>
+          <th>Friends</th>
+          <th>Actions</th>
+        </tr>
+        <tr ng-repeat="user in users | filter: search | orderBy: user.created_date" >
+          <td ng-model='viewUser.user_id'><span ng-bind='user.db_user_id'></span></td>
+          <td ng-model='viewUser.user_name'><span ng-bind='user.db_user_name'></span></td>
+          <td ng-model='viewUser.user_email'><span ng-bind="user.db_user_email"></span></td>
+          <td ng-model='viewUser.user_birthdate'><span ng-bind="user.db_user_birthday  | date:'yyyy-MMM-dd'"></span></td>
+          <td ng-model='viewUser.user_date'><span ng-bind="user.db_created_date | date:'yyyy-MMM-dd'"></span></td>
+          <td ><span ng-bind="user.db_user_friends.length"></span></td>
+          <td><input type='submit' value='Add Friend' ng-click='addFriend(user.db_user_id)'>
+          <td><input type='submit' value='Show' ng-click='showUser(user.db_user_id)'></td>
+        </tr>
+      </table>
+
+</div>

@@ -1,0 +1,57 @@
+  <div ng-controller='usersController'>
+    <div class="container">
+      <div class="row">
+
+          <h1>{{currentUser.db_user_id | uppercase}}</h1><button class="btn btn-default btn-lg" type="submit" ng-click='logout()'>Logout</button>
+          <p><img src="{{currentUser.db_user_picture_url}}" width="400px"></p>
+          <h5>{{currentUser.db_user_name}}</h5>
+          <h5>{{currentUser.db_user_email}}</h5>
+          <h5>{{currentUser.db_user_birthday | date:'MMM-dd-yyyy'}}</h5>
+          <hr>
+      </div>
+
+      <div class="row" ng-if="currentUser.db_pending_endorsements.length">
+        <h4>Pending Endorsements</h4>
+        <div ng-repeat="end in currentUser.db_pending_endorsements " >
+          <div ng-model='viewFriend.end'>
+              <span ng-bind='end.requested_by'></span>
+              <input type='submit' value='Complete Endorsement ' ng-click='showEndorsementForm(end.requested_by)'>
+          </div>
+        </div>
+        <hr>      
+      </div>
+
+      <div class="row" ng-if="currentUser.db_user_endorsements.length">
+        <h4>Endorsements</h4>
+        <ul ng-repeat="endorsement in currentUser.db_user_endorsements">
+              <br>
+              By <span ng-bind='endorsement.endorsed_by'> </span><br>
+              At <span ng-bind='endorsement.endorsed_time'> </span><br>
+              Question <b><span ng-bind='endorsement.question'></span></b>
+              Answer <b><span ng-bind='endorsement.answer'></span></b>
+              </li>
+        </ul>
+        <hr>      
+      </div>
+
+      <div class="row" >
+        <b>Friends</b>
+        <select ng-model='viewFriend.name' ng-options="user as user for user in userNames"
+               ng-init="viewFriend.name= customers[0]" >
+        </select>
+        <input type='submit' value='Add Friend' ng-click='addFriend(viewFriend.name)'>
+      </div>
+
+      <div class="row" ng-if="friends.length">
+        <table class="table">
+          <tr ng-repeat="friend in friends | filter: search " >
+            <td ><span ng-bind='friend.db_user_id'></span></td>
+
+            <td ><img ng-src="{{friend.db_user_picture_url}}"  width="200px"/></td>
+
+            <td><input type='submit' value='Request Endorsement ' ng-click='requestEndorsement(friend.db_user_id)'></td>
+          </tr>
+        </table>
+      </div>
+ </div>
+</div>

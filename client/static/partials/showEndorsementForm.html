@@ -1,0 +1,12 @@
+<div class="container" ng-controller='usersController'>
+   	<form >
+			<h1 style="text-align:center">Welcome {{currentUser.db_user_id}}! You have been requested by {{endorsement_request_by}} to endorse! </h1>
+			 <hr>
+					<label ng-model='endorsement.q'>Is {{endorsement_request_by}} a trustworthy Dater?</label>
+			        <input ng-model='endorsement.answer1' type="name" class="form-control" required autofocus /></p>
+			        <input ng-model='endorsement.question1' type="hidden" name="q" ng-value="{{endorsement_request_by}}" /></p>
+
+					<input type="submit" value='Send the Endorsement!' ng-click='addEndorsement(endorsement_request_by, "Is " + endorsement_request_by + " a trustworthy Dater?")'>
+   	</form>
+
+</div>

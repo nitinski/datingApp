@@ -1,0 +1,14 @@
+  <div ng-controller='questionsController'>
+
+    <a href="#/">Home</a> | <a href="#/newQuestion">Add a question</a>
+
+    <div id="errorDiv"><span ng-bind='error'></span></div>
+    <h3>Add a new Question!</h3>
+      <form>
+        Question:<br> <input name='text' type='text' ng-model='newQuestion.text' /><br>
+        Description :<br> <textarea name='message'  ng-model='newQuestion.description' /></textarea><br><br>
+          <input style="background-color:blue; color: white;" type='submit' value='Submit' ng-click='addQuestion()'>
+        <input name='text' type='hidden' ng-model='newQuestion.user' /><br>
+      </form>
+
+  </div>

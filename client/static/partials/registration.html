@@ -1,0 +1,92 @@
+<div class="container" ng-controller='usersController'>
+	<!--start row--> 
+	<div class="row" > 
+
+			<!--start col -->
+			<div class="col-md-10">
+			</div>
+			<!--end col-->
+
+			<!--start col -->
+			<div class="col-md-2">
+				Have an account? <a href="#/login">Login</a>
+			</div>
+			<!--end col-->
+
+	</div>
+	<!--end row-->
+
+	<!--Start Row-->
+
+	<div class="row">
+
+		 <div class="col-md-6 "><h1 ><img src="./images/logo2.jpg" width="100%"> </h1>
+		 </div>
+		 <div class="col-md-4" class="animated 20s fadeIn" style="padding-top:100px">
+		 	<h2  > Clean profiles, <span style="color:black">dirty fun. </span> </h2>
+		 		<p></p>
+		 		<h4>Tired of dating shitty people? </h4> <h4> Here's a clean solution.</h4> 
+			 	<h4>Find less scary people in the dating world here, where everyone is chaparoned.</h4>
+			 	<p></p>
+		 </div>
+
+	</div>
+	<!--End Row-->
+
+	<!--Start Row-->
+
+	<div class="row" >
+		<div class="col-xs-6"> 
+
+			<div style="padding-top:100px; padding: 20px;  height:100px ">
+
+				<div class="col-md-4">
+				<p><img src="./images/signup2.png"/></p>
+				<h3>Quick Signup</h3>
+				</div>
+	    		<div class="col-md-4" >
+		    		<p style="text-align:center"><img src="./images/algo2.png"/></p>
+		    		<h3 style="text-align:center">Revolutionary <br>Algorithm</h3><h4> Metrics requires the user's own social network to rate user's legitimacy.</h4>
+		    	</div>
+		    	<div class="col-md-4">
+			    	<p style="text-align:right"><img src="./images/time2.png"/></p>
+			    	<h3 style="text-align:right">Saves Time</h3>
+		    	</div>
+			</div>
+
+		</div>
+
+    	<div class="col-md-4" style="background-color:teal; height:300px;">
+	       	<form >
+
+		        <h2 class="form-signin-heading">Join Us</h2>
+
+		        <p><label for="name" class="sr-only" >User ID</label>
+		        <input ng-model='viewUser.user_id' type="name" class="form-control" placeholder="Name" required autofocus></p>
+
+		        <p><label for="name" class="sr-only" >Name</label>
+		        <input ng-model='viewUser.user_name' type="name" class="form-control" placeholder="Name" required autofocus></p>
+
+				<p><label for="email" class="sr-only">Email</label>
+		        <input ng-model='viewUser.user_email' type="email" name="email" class="form-control" placeholder="nitinski1@yahoo.com" required></p>
+
+		        <p><label for="birthday" class="sr-only">Date of Birth</label>
+		        <input ng-model='viewUser.user_birthday' type="date" name="birthday" class="form-control" placeholder="01/01/2014" required></p>
+
+				<input class="btn btn-lg btn-warning btn-block" value='Get me some dates!' ng-click='addUser()'>
+
+
+	      	</form>
+	    </div>
+	    <div class="col-xs-2"></div>
+
+	</div>
+	<!--End Row-->
+
+	<!-- Start row-->
+
+
+
+	<!-- End row-->
+
+</div>

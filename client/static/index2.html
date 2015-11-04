@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <title></title>
+    <!-- THESE TWO VERSIONS BELOW MUST MATCH!!!! -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./stylesheets/skeleton.css">
+
+    <script>
+      //  inject the ngRoute dependency in the module.
+      var myApp = angular.module('myApp', ['ngRoute']);
+      //  use the config method to set up routing:
+      // USING locationfinder to have a new Edit form to Update user.
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1622690477993597',
+//            appId      : '975790679151715',
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+      myApp.config(function ($routeProvider, $locationProvider) {
+        $routeProvider
+          .when('/',{
+              templateUrl: 'partials/login.html',
+              controller: 'LoginCtrl'
+          })
+          .otherwise({
+            redirectTo: '/'
+          });
+      });
+
+
+      //  build the controllers
+      myApp.controller('LoginCtrl', ['$scope', '$http', '$location',
+        function ($scope, $http, $location) {
+          $scope.name = "Login Please!!";
+
+          $scope.FBLogin = function() {
+            FB.login(function(response){
+              if(response.authResponse) {
+                console.log("Welcome! fetching your info");
+                FB.api('/me', function(response){
+                  console.log("Good to see you - " + response.name);
+                  console.log(response);
+
+                });
+              }
+              else {
+                console.log("User cancelled login or didn't authorize");                
+              }
+            })
+
+          } ;
+                   
+      }]);
+
+    </script>
+
+  </head>
+  <body>
+
+    <div >
+        <div ng-view="" >
+
+    </div>
+  
+
+  </body>
+</html>
